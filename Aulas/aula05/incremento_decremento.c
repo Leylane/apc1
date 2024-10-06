@@ -3,7 +3,7 @@
 int main(){
   //Entrada
   int numero;
-  printf("Entre com um número: ");
+  printf("Entre com um numero: ");
   int deu_certo = scanf("%i", &numero);
 
     // Processamento
@@ -20,12 +20,12 @@ int main(){
   
 
     // Saida
-    printf("Incremento de %i é %i\n", numero, incremento);
-    printf("Pre-incremento de %i é %i\n", numero, pre_incremento);
-    printf("Pos-incremento de %i é %i\n", numero, pos_incremento);
-    printf("Decremento de %i é %i\n", numero, decremento);
-    printf("Pré-decremento de %i é %i \n", numero, pre_decremento);
-    printf("Pós-decremento de %i é %i\n", numero, pos_decremento);
+    printf("Incremento de %i ate %i\n", numero, incremento);
+    printf("Pre-incremento de %i ate %i\n", numero, pre_incremento);
+    printf("Pos-incremento de %i ate %i\n", numero, pos_incremento);
+    printf("Decremento de %i ate %i\n", numero, decremento);
+    printf("Pre-decremento de %i ate %i \n", numero, pre_decremento);
+    printf("Pos-decremento de %i ate %i\n", numero, pos_decremento);
   
 
     return 0;

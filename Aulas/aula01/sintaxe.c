@@ -20,10 +20,10 @@ blocos {}
 #include <stdio.h> // inclui a biblioteca stdio.h
 
 int main(){        // funcao principal
-  //1. entrada: identificação de tipos de informações necessárias
+  //1. entrada: identificacao de tipos de informacoes necessarias
     //ex: char, int, float
-    //ex: variáveis
-    //ex: leitura das informações inseridas
+    //ex: variaveis
+    //ex: leitura das informacoes inseridas
 
   int primeiro_numero;
   int segundo_numero;
@@ -32,12 +32,12 @@ int main(){        // funcao principal
   segundo_numero = 6;
   
   //2. Processamento: 
-    // cálculos: soma, subtração, multiplicação etc
+    // calculos: soma, subtracao, multiplicacao etc
   int soma = primeiro_numero + segundo_numero;
     
-  //3. saída:
+  //3. saida:
     // escrita do resultado
-  printf("A soma de %i com %i é %i\n", primeiro_numero, segundo_numero, soma);
+  printf("A soma de %i com %i ate %i\n", primeiro_numero, segundo_numero, soma);
   
   return 0;        // return fim do programa
 }

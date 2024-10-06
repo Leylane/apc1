@@ -2,9 +2,9 @@
 
 int main() {
   int numero = 0;
-  printf("Entre com um número: ");
+  printf("Entre com um numero: ");
   int deu_certo = scanf("%i", &numero);
-  printf("Você digitou: %i\n", numero);
+  printf("Voce digitou: %i\n", numero);
   printf("A leitura deu certo? %i\n", deu_certo);
   
   int coord_x = 0;
@@ -13,6 +13,6 @@ int main() {
   printf("Entre com as coordenadas de um ponto: ");
   deu_certo = scanf("%i %i", &coord_x, &coord_y);
 
-  printf("Você digitou: %i %i \n", coord_x, coord_y);
+  printf("Voce digitou: %i %i \n", coord_x, coord_y);
   return 0;
 }

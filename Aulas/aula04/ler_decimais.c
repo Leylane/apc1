@@ -6,7 +6,7 @@ int main(){
   printf("Entre com uma nota entre 0 e 10: ");
   int deu_certo = scanf("%f", &nota);
 
-  printf("Você digitou %f\n", nota);
+  printf("Voce digitou %f\n", nota);
 
   double pi = 0.0;
   printf("Entre com o valor de pi: ");

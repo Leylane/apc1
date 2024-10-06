@@ -24,8 +24,8 @@ int main() {
   // imprime uma string
 
   printf("%s \n", "Boa Noite");
-  printf("%30s! \n", "Quero Café");
-  printf("%-30s! \n", "Quero Café");
+  printf("%30s! \n", "Quero Cafe");
+  printf("%-30s! \n", "Quero Cafe");
 
   return 0;
 }

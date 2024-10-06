@@ -6,12 +6,12 @@ int main(){
     int numero2;
     float numero3;
 
-    printf("Entre com um número: ");
+    printf("Entre com um numero: ");
     int deu_certo = scanf("%i", &numero1);
-    printf("Entre com um número: ");
-    int deu_certo = scanf("%i", &numero2);
+    printf("Entre com um numero: ");
+    deu_certo = scanf("%i", &numero2);
     printf("Entre com um decimal: ");
-    int deu_certo = scanf("%f", &numero3);
+    deu_certo = scanf("%f", &numero3);
 
     //Processamento
 
