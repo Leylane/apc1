@@ -1,6 +1,7 @@
 {
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
-        "COMANDO_DO_WHILE.C": "cpp"
+        "COMANDO_DO_WHILE.C": "cpp",
+        "string.h": "c"
     }
 }
