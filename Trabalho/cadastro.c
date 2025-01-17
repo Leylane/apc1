@@ -14,7 +14,6 @@ int main() {
     char livros_titulo[MAX_LIVROS][100];
     char livros_autor[MAX_LIVROS][100];
     char livros_editora[MAX_LIVROS][100];
-    char livros_isbn[MAX_LIVROS][14]; // Campo para ISBN
 
     // Variáveis de usuários
     int usuarios_id[MAX_USUARIOS];
@@ -71,27 +70,6 @@ int main() {
             fgets(livros_editora[contador_livros], sizeof(livros_editora[contador_livros]), stdin);
             strtok(livros_editora[contador_livros], "\n");
 
-            // Validação do ISBN
-            int isbn_valido = 0;
-            do {
-                printf("Informe o ISBN (10 a 13 caracteres numéricos): ");
-                fgets(livros_isbn[contador_livros], sizeof(livros_isbn[contador_livros]), stdin);
-                strtok(livros_isbn[contador_livros], "\n");
-
-                int isbn_tamanho = strlen(livros_isbn[contador_livros]);
-                isbn_valido = (isbn_tamanho >= 10 && isbn_tamanho <= 13);
-
-                for (int i = 0; i < isbn_tamanho && isbn_valido; i++) {
-                    if (!isdigit(livros_isbn[contador_livros][i])) {
-                        isbn_valido = 0;
-                    }
-                }
-
-                if (!isbn_valido) {
-                    printf("ISBN invalido. Tente novamente.\n");
-                }
-            } while (!isbn_valido);
-
             // Validação do ano
             printf("Ano de publicacao (entre 1500 e 2024): ");
             while (scanf("%d", &livros_ano[contador_livros]) != 1 || 
@@ -111,13 +89,16 @@ int main() {
             } else {
                 printf("\n=== Livros Cadastrados ===\n");
                 for (int i = 0; i < contador_livros; i++) {
-                    printf("ID: %d | Titulo: %s | Autor: %s | Editora: %s | ISBN: %s | Ano: %d\n", 
-                           livros_id[i], livros_titulo[i], livros_autor[i], livros_editora[i], 
-                           livros_isbn[i], livros_ano[i]);
+                    printf("ID: %d\n", livros_id[i]);
+                    printf("Titulo: %s\n", livros_titulo[i]);
+                    printf("Autor: %s\n", livros_autor[i]);
+                    printf("Editora: %s\n", livros_editora[i]);
+                    printf("Ano: %d\n", livros_ano[i]);
+                    printf("--------------------------\n");
                 }
             }
             printf("\nPressione ENTER para voltar ao menu...\n");
-            getchar(); // Esperar a tecla ENTER ser pressionada
+            getchar(); // Esperar o pressionamento de ENTER antes de continuar
 
         } else if (opcao == 3) { // Cadastrar usuário
             if (contador_usuarios >= MAX_USUARIOS) {
@@ -167,73 +148,74 @@ int main() {
             } else {
                 printf("\n=== Usuarios Cadastrados ===\n");
                 for (int i = 0; i < contador_usuarios; i++) {
-                    printf("ID: %d | Nome: %s | Email: %s | Telefone: %s\n", 
-                           usuarios_id[i], usuarios_nome[i], usuarios_email[i], usuarios_telefone[i]);
+                    printf("ID: %d\n", usuarios_id[i]);
+                    printf("Nome: %s\n", usuarios_nome[i]);
+                    printf("Email: %s\n", usuarios_email[i]);
+                    printf("Telefone: %s\n", usuarios_telefone[i]);
+                    printf("--------------------------\n");
                 }
             }
             printf("\nPressione ENTER para voltar ao menu...\n");
-            getchar(); // Esperar a tecla ENTER ser pressionada
+            getchar(); // Esperar o pressionamento de ENTER antes de continuar
 
         } else if (opcao == 5) { // Registrar empréstimo
-            if (contador_livros == 0 || contador_usuarios == 0) {
-                printf("Nao ha livros ou usuarios cadastrados para realizar emprestimos.\n");
+            if (contador_emprestimos >= MAX_EMPRESTIMOS) {
+                printf("Nao e possivel registrar mais emprestimos.\n");
                 continue;
             }
 
-            printf("ID do Livro para emprestimo: ");
             int id_livro, id_usuario;
+
+            printf("ID do livro: ");
             scanf("%d", &id_livro);
             getchar();
 
-            if (id_livro <= 0 || id_livro > contador_livros) {
+            if (id_livro < 1 || id_livro > contador_livros) {
                 printf("Livro nao encontrado.\n");
                 continue;
             }
 
-            printf("ID do Usuario para emprestimo: ");
+            printf("ID do Usuario: ");
             scanf("%d", &id_usuario);
             getchar();
 
-            if (id_usuario <= 0 || id_usuario > contador_usuarios) {
+            if (id_usuario < 1 || id_usuario > contador_usuarios) {
                 printf("Usuario nao encontrado.\n");
                 continue;
             }
 
-            printf("Data do emprestimo (dd/mm/aaaa): ");
+            printf("Data do Emprestimo (dd/mm/aaaa): ");
             fgets(emprestimos_data[contador_emprestimos], sizeof(emprestimos_data[contador_emprestimos]), stdin);
             strtok(emprestimos_data[contador_emprestimos], "\n");
 
-            // Calcular prazo de devolução
-            printf("Prazo de devolucao (dd/mm/aaaa): ");
+            printf("Prazo do Emprestimo (dd/mm/aaaa): ");
             fgets(emprestimos_prazo[contador_emprestimos], sizeof(emprestimos_prazo[contador_emprestimos]), stdin);
             strtok(emprestimos_prazo[contador_emprestimos], "\n");
 
             emprestimos_livro_id[contador_emprestimos] = id_livro;
             emprestimos_usuario_id[contador_emprestimos] = id_usuario;
-            contador_emprestimos++;
 
+            contador_emprestimos++;
             printf("Emprestimo registrado com sucesso!\n");
 
         } else if (opcao == 6) { // Listar empréstimos
             if (contador_emprestimos == 0) {
                 printf("Nao ha emprestimos registrados.\n");
             } else {
-                printf("\n=== Emprestimos Realizados ===\n");
+                printf("\n=== Emprestimos Registrados ===\n");
                 for (int i = 0; i < contador_emprestimos; i++) {
-                    printf("Livro ID: %d | Usuario ID: %d | Data Emprestimo: %s | Prazo: %s\n",
-                           emprestimos_livro_id[i], emprestimos_usuario_id[i], 
-                           emprestimos_data[i], emprestimos_prazo[i]);
+                    printf("ID Livro: %d, ID Usuario: %d\n", emprestimos_livro_id[i], emprestimos_usuario_id[i]);
+                    printf("Data: %s, Prazo: %s\n", emprestimos_data[i], emprestimos_prazo[i]);
+                    printf("--------------------------\n");
                 }
             }
             printf("\nPressione ENTER para voltar ao menu...\n");
-            getchar(); // Esperar a tecla ENTER ser pressionada
+            getchar(); // Esperar o pressionamento de ENTER antes de continuar
 
-        } else if (opcao != 7) {
-            printf("Opcao invalida. Tente novamente.\n");
         }
 
     } while (opcao != 7);
 
-    printf("Encerrando o sistema.\n");
+    printf("Saindo do sistema...\n");
     return 0;
 }
