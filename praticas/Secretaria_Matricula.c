@@ -5,10 +5,11 @@
 #define MAX_NOME 50
 
 int main() {
-    char nomes[MAX_USUARIOS][MAX_NOME]; // Array para armazenar os nomes
+    char primeiro_nome[MAX_USUARIOS][MAX_NOME]; // Array para armazenar os nomes
+    char ultimo_nome[MAX_USUARIOS][MAX_NOME];
     int idades[MAX_USUARIOS]; // Array para armazenar as idades
     int userCount = 0;
-    int choice;
+    int opcao;
 
     do {
         printf("\nMenu Principal:\n");
@@ -18,19 +19,21 @@ int main() {
         printf("Escolha uma opcao: ");
         
         // Verificando se a entrada eh um inteiro valido
-        if (scanf("%d", &choice) != 1) {
+        if (scanf("%d", &opcao) != 1) {
             while (getchar() != '\n'); // Limpa a linha
             printf("Entrada invalida! Tente novamente.\n");
             continue; // Retorna ao inicio do loop
         }
 
-        switch (choice) {
+        switch (opcao) {
             case 1:
                 if (userCount < MAX_USUARIOS) {
                     printf("Digite o nome do usuario: ");
-                    scanf(" %[^\n]s", nomes[userCount]); // Nome com espacos
+                    scanf(" %[^\n]s", primeiro_nome[userCount]); // Nome com espacos
+                    printf("Entre com o ultimo nome do usuario: ");
+                    scanf(" %[^\n]s", ultimo_nome[userCount]);
                     printf("Digite a idade do usuario: ");
-                    scanf("%d", &idades[userCount]);
+                    scanf("%d", &idades[userCount]);                  
 
                     // Validação da idade
                     while (idades[userCount] < 0 || idades[userCount] > 120) {
@@ -51,7 +54,7 @@ int main() {
                 } else {
                     printf("\nLista de usuarios:\n");
                     for (int i = 0; i < userCount; i++) {
-                        printf("Nome: %s, Idade: %d\n", nomes[i], idades[i]);
+                        printf("Nome: %s, Idade: %d\n", primeiro_nome[i], idades[i]);
                     }
                 }
                 break;
@@ -64,7 +67,7 @@ int main() {
                 printf("Opcao incorreta! Tente novamente.\n");
                 break;
         }
-    } while (choice != 3);
+    } while (opcao != 3);
 
     return 0;
 }
